@@ -1,0 +1,33 @@
+body{
+    background-color: aqua;
+}
+#container{
+    margin: auto;
+    font-size: 30px;
+    padding: 100px;
+    text-align: center;
+    height: 260px;
+    width: 600px;  
+}
+p{
+    color: black;
+}
+#userInput{
+    width: 170px;
+    height: 23px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#outputText{
+    color: black;
+}
+#enterButton{
+    border-radius: 5px;
+    border-color: black;
+    cursor: pointer;
+}
+#againButton{
+    border-radius: 5px;
+    border-color: black;
+    cursor: pointer;
+}

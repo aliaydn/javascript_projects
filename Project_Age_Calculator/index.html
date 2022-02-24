@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exact Age Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="parent">
+        <div class="inp">
+            <input type="date" id="input" placeholder="day/month/year">
+            <button id="button" onclick="calc()">Result Calc</button>
+        </div>
+        <!--display-->
+        <ul>
+            <li><span>00</span>years</li>
+            <li><span>00</span>months</li>
+            <li><span>00</span>days</li>
+            <li><span>00</span>hours</li>
+            <li><span>00</span>minutes</li>
+            <li><span>00</span>seconds</li>
+        </ul>
+    </div>
+
+    <!--JavaScript-->
+    <script type="text/javascript">
+        var datbtn = document.getElementById("button"),
+            datdiv = document.getElementById("div");
+            thedate = new Date(),
+            month = thedate.getMonth(),
+            day = thedate.getDate(),
+            year = thedate.getFullYear(),
+            span = document.querySelectorAll("span");
+
+
+        function calc() {
+            var date = new Date(),
+                hours = date.getHours(),
+                minutes = date.getMinutes(),
+                second = date.getSeconds();
+
+            var dat = window.input.value,
+                arr = dat.split("-")
+                arr0 = eval(arr[2]),
+                arr1 = eval(arr[1]),
+                arr2 = eval(arr[0]),
+                userday = 30 + day - arr0,
+                usermonth = 12 + month - arr1,
+                useryear = year - 1 - arr2;
+            
+            
+            if(arr[1] == null){
+                span.textContent.display ="none";                
+            }
+            if(userday >= 30){
+                userday = 0 + userday % 30;
+                usermonth = usermonth + 1;
+            }else {
+                userday = userday;
+                usermonth = usermonth;                
+            }
+
+
+            if(usermonth >=12){
+                usermonth = usermonth % 12;
+                useryear = useryear + 1;                
+            }else {
+                usermonth = usermonth;
+                useryear = useryear;
+            }
+
+
+
+            if(hours < 10){
+                hours = "0" + hours
+            }
+            if(minutes < 10){
+                minutes = "0" + minutes
+            }
+            if(second< 10){
+                second = "0" + second
+            }
+            if(userday < 10){
+                userday = "0" + userday
+            }
+            if(usermonth < 10){
+                usermonth = "0" + usermonth
+            }
+            if(useryear < 10){
+                useryear = "0" + useryear
+            }
+            span[0].textContent = useryear;  
+            span[1].textContent = usermonth; 
+            span[2].textContent = userday; 
+            span[3].textContent = hours; 
+            span[4].textContent = minutes; 
+            span[5].textContent = second; 
+             
+        setInterval(calc, 1000);
+
+        }
+
+
+    </script>
+</body>
+</html>
